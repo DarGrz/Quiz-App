@@ -13,7 +13,7 @@ const quizData = [
     b: "Cascading style sheets",
     c: "Cascading simple sheets",
     d: "Cars SUVs Sailboats",
-    correct: "d",
+    correct: "b",
   },
 ];
 
@@ -49,9 +49,9 @@ function deselectAnswers() {
 
 function getSelected() {
   let answer;
-  answerEls.forEach((answer) => {
-    if (answer.checked) {
-      answer = answer.id;
+  answerEls.forEach((answerEl) => {
+    if (answerEl.checked) {
+      answer = answerEl.id;
     }
   });
   return answer;
@@ -60,7 +60,7 @@ function getSelected() {
 submitBtn.addEventListener("click", () => {
   const answer = getSelected();
   if (answer) {
-    if (answer === quizData[currentQuiz].correct) {
+    if (answer == quizData[currentQuiz].correct) {
       score++;
     }
     currentQuiz++;
@@ -69,7 +69,7 @@ submitBtn.addEventListener("click", () => {
     } else {
       quiz.innerHTML = ` 
         <h2>You answered correctly at ${score}/${quizData.length} questions</h2>
-        <button onclick="location.reload(_)">Reload</button>`;
+        <button onclick="location.reload()">Reload</button>`;
     }
   }
 });
